@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <style>
+        /* Base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #6a11cb, #2575fc); /* Purple gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Menu container */
+        .menu-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #6a11cb; /* Purple text color */
+            margin-bottom: 30px;
+        }
+
+        .menu-button {
+            display: block;
+            width: 250px; /* Increased width */
+            height: 70px; /* Increased height */
+            margin: 15px auto; /* Improved margin for spacing */
+            background: #9c27b0; /* Purple */
+            border: none;
+            border-radius: 10px;
+            color: #ffffff; /* White text color for contrast */
+            font-size: 1.5em;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-button:hover {
+            transform: translateY(-3px);
+            background: #7b1fa2; /* Darker purple on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Order textbox */
+        .order-box {
+            width: 80%;
+            height: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #9c27b0; /* Purple border */
+            resize: none;
+            font-size: 1.2em;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .menu-button {
+                width: 200px; /* Smaller width on medium screens */
+                height: 60px; /* Adjusted height */
+                font-size: 1.2em;
+            }
+
+            .order-box {
+                height: 100px; /* Adjusted height */
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .menu-button {
+                width: 150px; /* Smaller width on small screens */
+                height: 50px; /* Adjusted height */
+                font-size: 1em;
+            }
+
+            .order-box {
+                height: 80px; /* Adjusted height */
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Menu Container -->
+    <div class="menu-container">
+        <h1>Main Menu</h1>
+        <button class="menu-button" onclick="location.href='burgers.html'">Burgers</button>
+        <button class="menu-button" onclick="location.href='drinks.html'">Drinks</button>
+
+        <!-- Order Textbox -->
+        <textarea class="order-box" id="orderBox" placeholder="Your orders will appear here..." readonly></textarea>
+
+        <!-- Additional Buttons for Order Management -->
+        <button class="menu-button" onclick="clearAllOrders()">Clear All Orders</button>
+        <button class="menu-button" onclick="clearSelectedOrder()">Clear Selected Order</button>
+    </div>
+
+    <script>
+        // Function to handle orders
+        function addOrder(order) {
+            const orderBox = document.getElementById('orderBox');
+            orderBox.value += order + '\n';
+        }
+
+        // Clear all orders
+        function clearAllOrders() {
+            document.getElementById('orderBox').value = '';
+        }
+
+        // Clear the selected order (last line)
+        function clearSelectedOrder() {
+            const orderBox = document.getElementById('orderBox');
+            const orders = orderBox.value.trim().split('\n');
+            if (orders.length > 0) {
+                orders.pop(); // Remove the last order
+                orderBox.value = orders.join('\n'); // Update the textbox
+            }
+        }
+    </script>
+
+</body>
+</html>

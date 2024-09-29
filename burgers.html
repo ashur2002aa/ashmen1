@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burgers</title>
+    <style>
+        /* Basic styles for the burgers page */
+        body {
+            background: linear-gradient(to bottom right, #6a11cb, #2575fc); /* Purple gradient */
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .menu-button {
+            display: block;
+            width: 250px; /* Increased width */
+            height: 70px; /* Increased height */
+            margin: 10px auto;
+            background: #9c27b0; /* Purple */
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            text-align: center;
+            line-height: 70px; /* Center text vertically */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-button:hover {
+            background: #7b1fa2; /* Darker purple on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <h1>Burgers Menu</h1>
+    <button class="menu-button" onclick="orderBurger('Cheeseburger')">Cheeseburger</button>
+    <button class="menu-button" onclick="orderBurger('Bacon Burger')">Bacon Burger</button>
+    <button class="menu-button" onclick="orderBurger('Veggie Burger')">Veggie Burger</button>
+    <button class="menu-button" onclick="orderBurger('BBQ Burger')">BBQ Burger</button>
+    <button class="menu-button" onclick="location.href='index.html'">Back to Main Menu</button>
+
+    <script>
+        function orderBurger(burgerName) {
+            const mainMenuWindow = window.opener; // Reference to the main menu window
+            mainMenuWindow.addOrder(`Ordered: ${burgerName}`);
+            alert(`${burgerName} has been added to your order!`);
+        }
+    </script>
+</body>
+</html>
